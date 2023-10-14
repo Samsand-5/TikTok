@@ -40,9 +40,10 @@
             android:gravity="center"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:textColor="#AE0202"/>
+            android:textColor="#F60202"/>
 
         <EditText
+            android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email "
@@ -52,6 +53,7 @@
             android:layout_margin="12dp"/>
 
         <EditText
+            android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password "
@@ -59,6 +61,32 @@
             android:background="@color/white"
             android:padding="12dp"
             android:layout_margin="12dp"/>
+
+        <EditText
+            android:id="@+id/confirm_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password "
+            android:inputType="textEmailAddress"
+            android:background="@color/white"
+            android:padding="12dp"
+            android:layout_margin="12dp"/>
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F30505"
+            android:layout_margin="13dp"
+            android:padding="13dp"
+            android:text="Sign Up"
+            android:textSize="22sp"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="13dp"
+            android:padding="10dp"/>
 
     </LinearLayout>
 
