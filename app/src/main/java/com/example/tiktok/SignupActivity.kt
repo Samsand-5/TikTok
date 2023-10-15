@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.widget.Toast
 import com.example.tiktok.databinding.ActivitySignupBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -49,13 +50,15 @@ class SignupActivity : AppCompatActivity() {
             binding.confirmPasswordInput.setError("Password not matched")
             return
         }
-        signupWithFirebase()
+        signupWithFirebase(email, password)
     }
 
-    fun signupWithFirebase() {
+    fun signupWithFirebase(email : String, password : String) {
         setInProgress(true)
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
-
-        )
+            email, password
+        ).addOnSuccessListener {
+            Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
+        }
     }
 }
