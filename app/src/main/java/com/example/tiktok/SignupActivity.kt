@@ -3,7 +3,9 @@ package com.example.tiktok
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import com.example.tiktok.databinding.ActivitySignupBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : AppCompatActivity() {
 
@@ -16,6 +18,18 @@ class SignupActivity : AppCompatActivity() {
         binding.submitBtn.setOnClickListener {
             signup()
         }
+    }
+
+    fun setInProgress(inProgress: Boolean){
+        if(inProgress) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.submitBtn.visibility = View.GONE
+        }
+        else {
+            binding.progressBar.visibility = View.GONE
+            binding.submitBtn.visibility = View.VISIBLE
+        }
+
     }
 
     fun signup() {
@@ -39,6 +53,9 @@ class SignupActivity : AppCompatActivity() {
     }
 
     fun signupWithFirebase() {
+        setInProgress(true)
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
 
+        )
     }
 }
