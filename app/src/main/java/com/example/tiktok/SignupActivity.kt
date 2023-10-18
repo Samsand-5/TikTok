@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.view.View
 import com.example.tiktok.databinding.ActivitySignupBinding
 import com.example.tiktok.model.UserModel
+import com.example.tiktok.util.UiUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -65,7 +66,8 @@ class SignupActivity : AppCompatActivity() {
                 Firebase.firestore.collection("user")
                     .document(user.uid)
                     .set(userModel).addOnSuccessListener {
-
+                        UiUtil.showToast(applicationContext,"Account Created Successfully")
+                        setInProgress(false)
                     }
             }
         }
