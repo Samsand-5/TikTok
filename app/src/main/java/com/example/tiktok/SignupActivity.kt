@@ -58,7 +58,9 @@ class SignupActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             email, password
         ).addOnSuccessListener {
-            Toast.makeText(applicationContext,"Success",Toast.LENGTH_SHORT).show()
+            it.user?.let {
+
+            }
         }
     }
 }
