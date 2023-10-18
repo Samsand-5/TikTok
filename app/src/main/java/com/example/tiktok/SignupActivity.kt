@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
-import android.widget.Toast
 import com.example.tiktok.databinding.ActivitySignupBinding
+import com.example.tiktok.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SignupActivity : AppCompatActivity() {
 
@@ -58,9 +60,15 @@ class SignupActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
             email, password
         ).addOnSuccessListener {
-            it.user?.let {
+            it.user?.let {user->
+                val userModel = UserModel(user.uid,email,email.substringBefore("@"))
+                Firebase.firestore.collection("user")
+                    .document(user.uid)
+                    .set(userModel).addOnSuccessListener {
 
+                    }
             }
         }
     }
 }
+
