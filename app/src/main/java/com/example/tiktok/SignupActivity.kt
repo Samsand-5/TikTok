@@ -1,5 +1,6 @@
 package com.example.tiktok
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -68,8 +69,13 @@ class SignupActivity : AppCompatActivity() {
                     .set(userModel).addOnSuccessListener {
                         UiUtil.showToast(applicationContext,"Account Created Successfully")
                         setInProgress(false)
+                        startActivity(Intent(this,MainActivity::class.java))
+                        finish()
                     }
             }
+        }.addOnFailureListener {
+            UiUtil.showToast(applicationContext,"Something Went Wrong")
+            setInProgress(false)
         }
     }
 }
