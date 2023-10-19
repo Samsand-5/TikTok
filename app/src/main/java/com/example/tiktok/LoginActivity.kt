@@ -60,6 +60,9 @@ class LoginActivity : AppCompatActivity() {
             setInProgress(false)
             startActivity(Intent(this,MainActivity::class.java))
             finish()
+        }.addOnFailureListener {
+            UiUtil.showToast(applicationContext,it.localizedMessage?: "Something Went Wrong")
+            setInProgress(false)
         }
     }
 }

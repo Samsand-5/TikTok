@@ -78,7 +78,7 @@ class SignupActivity : AppCompatActivity() {
                     }
             }
         }.addOnFailureListener {
-            UiUtil.showToast(applicationContext,"Something Went Wrong")
+            UiUtil.showToast(applicationContext,it.localizedMessage?: "Something went wrong")
             setInProgress(false)
         }
     }
