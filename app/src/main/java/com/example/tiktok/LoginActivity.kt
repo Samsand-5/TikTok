@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import com.example.tiktok.databinding.ActivityLoginBinding
+import com.example.tiktok.util.UiUtil
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
@@ -51,5 +53,13 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginWithFirebase(email : String, password : String){
         setInProgress(true)
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+            email, password
+        ).addOnSuccessListener {
+            UiUtil.showToast(this,"Login Successfully")
+            setInProgress(false)
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
     }
 }
