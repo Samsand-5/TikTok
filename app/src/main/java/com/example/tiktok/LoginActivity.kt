@@ -50,6 +50,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun loginWithFirebase(email : String, password : String){
-
+        setInProgress(true)
     }
 }
