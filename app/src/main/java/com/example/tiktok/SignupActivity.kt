@@ -20,6 +20,11 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        FirebaseAuth.getInstance().currentUser?.let{
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        }
+
         binding.submitBtn.setOnClickListener {
             signup()
         }
