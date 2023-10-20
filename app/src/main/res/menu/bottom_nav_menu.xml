@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:id="@+id/bottom_menu_home"/>
+    <item android:title="Add Video"
+        android:id="@+id/bottom_menu_add_video"/>
+    <item android:title="Profile"
+        android:id="@+id/bottom_menu_profile"/>
+</menu>
