@@ -11,6 +11,17 @@
         android:layout_height="match_parent"
         android:id="@+id/post_views">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:gravity="top"
+            android:layout_margin="10dp"
+            android:text="Write your caption here"
+            android:padding="10dp"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="110dp"/>
 
     </RelativeLayout>
     
