@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoUploadActivity">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/post_views">
+
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone"
+        android:id="@+id/upload_view">
+
+        <ImageView
+            android:id="@+id/add_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/icon_add"
+            android:layout_centerInParent="true"
+            />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_icon"
+            android:gravity="center"
+            android:text="Click to Upload Video"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
