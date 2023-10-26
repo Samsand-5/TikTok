@@ -27,7 +27,7 @@ class VideoUploadActivity : AppCompatActivity() {
         videoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
             if(result.resultCode == RESULT_OK){
                 selectedVideoUri = result.data?.data
-                UiUtil.showToast(this,"Got Video"+selectedVideoUri.toString())
+
             }
         }
         binding.uploadView.setOnClickListener {
