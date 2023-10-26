@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
 
 class VideoUploadActivity : AppCompatActivity() {
@@ -16,5 +17,9 @@ class VideoUploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVideoUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        videoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
+            
+        }
     }
 }
