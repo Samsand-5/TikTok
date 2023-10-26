@@ -6,10 +6,13 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
+import com.example.tiktok.util.UiUtil
 
 class VideoUploadActivity : AppCompatActivity() {
 
@@ -42,9 +45,14 @@ class VideoUploadActivity : AppCompatActivity() {
         if(ContextCompat.checkSelfPermission(this,readExternalVideo) == PackageManager.PERMISSION_GRANTED){
             openVideoPicker()
         }
+        else{
+            ActivityCompat.requestPermissions(this, arrayOf(readExternalVideo),100)
+        }
     }
 
     private fun openVideoPicker() {
-        TODO("Not yet implemented")
+        var intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "video/*"
+        UiUtil.showToast(this,"Video Picker")
     }
 }
