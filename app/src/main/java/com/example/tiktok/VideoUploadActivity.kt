@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -27,12 +28,17 @@ class VideoUploadActivity : AppCompatActivity() {
         videoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
             if(result.resultCode == RESULT_OK){
                 selectedVideoUri = result.data?.data
-
+                showPostView()
             }
         }
         binding.uploadView.setOnClickListener {
             checkPermissionAndOpenVideoPicker()
         }
+    }
+
+    private fun showPostView() {
+        binding.postViews.visibility = View.VISIBLE
+        binding.uploadView.visibility = View.GONE
     }
 
     private fun checkPermissionAndOpenVideoPicker() {
