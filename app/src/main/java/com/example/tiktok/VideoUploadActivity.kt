@@ -34,8 +34,31 @@ class VideoUploadActivity : AppCompatActivity() {
         binding.uploadView.setOnClickListener {
             checkPermissionAndOpenVideoPicker()
         }
+        binding.submitPostBtn.setOnClickListener {
+            postVideo()
+        }
     }
 
+    private fun postVideo() {
+        if(binding.postCaptionInput.text.toString().isEmpty()){
+            binding.postCaptionInput.setError("Write SomeThing")
+            return
+        }
+        setInProgress(true)
+        selectedVideoUri?.apply {
+
+        }
+    }
+    private fun setInProgress(inProgress : Boolean){
+        if(inProgress) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.submitPostBtn.visibility = View.GONE
+        }
+        else {
+            binding.progressBar.visibility = View.GONE
+            binding.submitPostBtn.visibility = View.VISIBLE
+        }
+    }
     private fun showPostView() {
         binding.postViews.visibility = View.VISIBLE
         binding.uploadView.visibility = View.GONE
