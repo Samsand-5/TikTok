@@ -46,7 +46,9 @@ class VideoUploadActivity : AppCompatActivity() {
         }
         setInProgress(true)
         selectedVideoUri?.apply {
+            //store in firebase cloud
 
+            //video model store in firebase firestore
         }
     }
     private fun setInProgress(inProgress : Boolean){
