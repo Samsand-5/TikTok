@@ -27,6 +27,7 @@ class VideoUploadActivity : AppCompatActivity() {
         videoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
             if(result.resultCode == RESULT_OK){
                 selectedVideoUri = result.data?.data
+                UiUtil.showToast(this,"Got Video"+selectedVideoUri.toString())
             }
         }
         binding.uploadView.setOnClickListener {
@@ -53,6 +54,7 @@ class VideoUploadActivity : AppCompatActivity() {
     private fun openVideoPicker() {
         var intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
         intent.type = "video/*"
+        videoLauncher.launch(intent)
         UiUtil.showToast(this,"Video Picker")
     }
 }
