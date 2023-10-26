@@ -1,12 +1,14 @@
 package com.example.tiktok
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
 
 class VideoUploadActivity : AppCompatActivity() {
@@ -34,5 +36,15 @@ class VideoUploadActivity : AppCompatActivity() {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             readExternalVideo = android.Manifest.permission.READ_MEDIA_VIDEO
         }
+        else{
+            readExternalVideo = android.Manifest.permission.READ_EXTERNAL_STORAGE
+        }
+        if(ContextCompat.checkSelfPermission(this,readExternalVideo) == PackageManager.PERMISSION_GRANTED){
+            openVideoPicker()
+        }
+    }
+
+    private fun openVideoPicker() {
+        TODO("Not yet implemented")
     }
 }
