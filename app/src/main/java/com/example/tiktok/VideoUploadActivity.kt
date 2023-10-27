@@ -45,6 +45,9 @@ class VideoUploadActivity : AppCompatActivity() {
         binding.submitPostBtn.setOnClickListener {
             postVideo()
         }
+        binding.cancelPostBtn.setOnClickListener {
+            finish()
+        }
     }
 
     private fun postVideo() {
