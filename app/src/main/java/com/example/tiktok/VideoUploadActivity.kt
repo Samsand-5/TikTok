@@ -12,8 +12,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
+import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 class VideoUploadActivity : AppCompatActivity() {
@@ -60,8 +64,14 @@ class VideoUploadActivity : AppCompatActivity() {
         }
     }
 
-    private fun postToFireStore(toString: String) {
-
+    private fun postToFireStore(url: String) {
+        val videoModel = VideoModel(
+        FirebaseAuth.getInstance().currentUser?.uid!! + "_" + Timestamp.now().toString(),
+        binding.postCaptionInput.text.toString(),
+        url,
+        FirebaseAuth.getInstance().currentUser?.uid!!,
+        Timestamp.now()
+        )
     }
     private fun setInProgress(inProgress : Boolean){
         if(inProgress) {
