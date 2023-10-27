@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
 import com.example.tiktok.util.UiUtil
+import com.google.firebase.storage.FirebaseStorage
 
 class VideoUploadActivity : AppCompatActivity() {
 
@@ -47,7 +48,12 @@ class VideoUploadActivity : AppCompatActivity() {
         setInProgress(true)
         selectedVideoUri?.apply {
             //store in firebase cloud
+            val videoRef = FirebaseStorage.getInstance()
+                .reference.child("videos/"+ this.lastPathSegment)
+            videoRef.putFile(this)
+                .addOnSuccessListener{
 
+                }
             //video model store in firebase firestore
         }
     }
