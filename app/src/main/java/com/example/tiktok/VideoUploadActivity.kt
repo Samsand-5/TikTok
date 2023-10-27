@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.Glide
 import com.example.tiktok.databinding.ActivityVideoUploadBinding
 import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
@@ -101,8 +102,12 @@ class VideoUploadActivity : AppCompatActivity() {
         }
     }
     private fun showPostView() {
-        binding.postViews.visibility = View.VISIBLE
-        binding.uploadView.visibility = View.GONE
+        selectedVideoUri?.apply {
+            binding.postViews.visibility = View.VISIBLE
+            binding.uploadView.visibility = View.GONE
+            Glide.with(binding.postThumbnailView).load(this).into(binding.postThumbnailView)
+        }
+
     }
 
     private fun checkPermissionAndOpenVideoPicker() {
