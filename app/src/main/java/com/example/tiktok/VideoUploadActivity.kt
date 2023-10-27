@@ -34,6 +34,7 @@ class VideoUploadActivity : AppCompatActivity() {
 
         videoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result->
             if(result.resultCode == RESULT_OK){
+                //getting file from external storage
                 selectedVideoUri = result.data?.data
                 showPostView()
             }
@@ -78,9 +79,12 @@ class VideoUploadActivity : AppCompatActivity() {
             .document(videoModel.videoId)
             .set(videoModel)
             .addOnSuccessListener {
-
+                setInProgress(true)
+                UiUtil.showToast(applicationContext,"Video Uploaded")
+                finish()
             }.addOnFailureListener {
-
+                setInProgress(false)
+                UiUtil.showToast(applicationContext,it.localizedMessage?: "Video failed to Upload")
             }
     }
     private fun setInProgress(inProgress : Boolean){
