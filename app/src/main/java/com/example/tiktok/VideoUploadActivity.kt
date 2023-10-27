@@ -18,6 +18,8 @@ import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
 class VideoUploadActivity : AppCompatActivity() {
@@ -72,6 +74,14 @@ class VideoUploadActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().currentUser?.uid!!,
         Timestamp.now()
         )
+        Firebase.firestore.collection("videos")
+            .document(videoModel.videoId)
+            .set(videoModel)
+            .addOnSuccessListener {
+
+            }.addOnFailureListener {
+
+            }
     }
     private fun setInProgress(inProgress : Boolean){
         if(inProgress) {
