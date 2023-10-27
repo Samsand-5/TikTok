@@ -52,10 +52,16 @@ class VideoUploadActivity : AppCompatActivity() {
                 .reference.child("videos/"+ this.lastPathSegment)
             videoRef.putFile(this)
                 .addOnSuccessListener{
-
+                    videoRef.downloadUrl.addOnSuccessListener {downloadUrl->
+                        //video model store in firestore
+                        postToFireStore(downloadUrl.toString())
+                    }
                 }
-            //video model store in firebase firestore
         }
+    }
+
+    private fun postToFireStore(toString: String) {
+
     }
     private fun setInProgress(inProgress : Boolean){
         if(inProgress) {
