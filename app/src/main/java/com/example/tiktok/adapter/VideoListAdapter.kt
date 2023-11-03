@@ -13,8 +13,10 @@ class VideoListAdapter {
             binding.videoView.apply {
                 setVideoPath(videoModel.url)
                 setOnPreparedListener {
-
+                    it.start()
+                    it.isLooping = true
                 }
+                //play & pause
             }
         }
     }
