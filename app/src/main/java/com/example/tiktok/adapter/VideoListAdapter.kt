@@ -1,5 +1,6 @@
 package com.example.tiktok.adapter
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
@@ -40,7 +41,8 @@ class VideoListAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
-        TODO("Not yet implemented")
+        val binding = VideoItemRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return VideoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
