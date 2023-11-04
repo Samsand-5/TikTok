@@ -54,4 +54,9 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         adapter.startListening()
     }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
+    }
 }
