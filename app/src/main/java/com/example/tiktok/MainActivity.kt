@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
     }
 
+    //listener for FireStoreRecyclerOptions
     override fun onStart() {
         super.onStart()
         adapter.startListening()
