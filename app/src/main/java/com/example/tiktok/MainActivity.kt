@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpViewPager() {
+        //options will get videos from firestore videos collections and convert it into videoModel and we will  get the video
         val options = FirestoreRecyclerOptions.Builder<VideoModel>()
             .setQuery(
                 Firebase.firestore.collection("videos"),
