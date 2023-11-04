@@ -42,6 +42,6 @@ class MainActivity : AppCompatActivity() {
             .setQuery(
                 Firebase.firestore.collection("videos"),
                 VideoModel::class.java
-            )
+            ).build()
     }
 }
