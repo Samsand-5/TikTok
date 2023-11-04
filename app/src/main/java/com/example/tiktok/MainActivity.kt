@@ -44,5 +44,8 @@ class MainActivity : AppCompatActivity() {
                 Firebase.firestore.collection("videos"),
                 VideoModel::class.java
             ).build()
+
+        adapter = VideoListAdapter(options)
+        binding.viewPager.adapter = adapter
     }
 }
