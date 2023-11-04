@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
     private fun setUpViewPager() {
         val options = FirestoreRecyclerOptions.Builder<VideoModel>()
             .setQuery(
-                Firebase.firestore.collection("videos")
+                Firebase.firestore.collection("videos"),
+                VideoModel::class.java
             )
     }
 }
