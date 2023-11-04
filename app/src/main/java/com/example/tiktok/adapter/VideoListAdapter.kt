@@ -46,6 +46,6 @@ class VideoListAdapter(
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
-        TODO("Not yet implemented")
+        holder.bindVideo(model)
     }
 }
