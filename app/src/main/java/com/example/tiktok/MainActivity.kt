@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tiktok.adapter.VideoListAdapter
 import com.example.tiktok.databinding.ActivityMainBinding
+import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +36,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpViewPager() {
-
+        val options = FirestoreRecyclerOptions.Builder<VideoModel>()
     }
 }
