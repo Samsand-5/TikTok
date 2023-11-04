@@ -1,11 +1,18 @@
 package com.example.tiktok.adapter
 
 import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tiktok.databinding.VideoItemRowBinding
 import com.example.tiktok.model.VideoModel
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
-class VideoListAdapter {
+class VideoListAdapter(
+    options: FirestoreRecyclerOptions<VideoModel>
+) : FirestoreRecyclerAdapter<VideoModel,VideoListAdapter.VideoViewHolder>(options){
 
     inner class VideoViewHolder(private var binding : VideoItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -30,5 +37,13 @@ class VideoListAdapter {
                 }
             }
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
+        TODO("Not yet implemented")
     }
 }
