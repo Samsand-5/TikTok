@@ -32,7 +32,7 @@ class VideoListAdapter(
                         binding.pauseIcon.visibility=View.VISIBLE
                     }
                     else{
-                        resume()
+                        start()
                         binding.pauseIcon.visibility=View.GONE
                     }
                 }
