@@ -48,4 +48,9 @@ class MainActivity : AppCompatActivity() {
         adapter = VideoListAdapter(options)
         binding.viewPager.adapter = adapter
     }
+
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
 }
