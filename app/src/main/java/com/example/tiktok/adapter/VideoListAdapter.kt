@@ -18,6 +18,9 @@ class VideoListAdapter(
     inner class VideoViewHolder(private var binding : VideoItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindVideo(videoModel: VideoModel) {
+            //bind user data
+
+
             //bind video
             binding.videoView.apply {
                 setVideoPath(videoModel.url)
