@@ -7,9 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.tiktok.databinding.VideoItemRowBinding
+import com.example.tiktok.model.UserModel
 import com.example.tiktok.model.VideoModel
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class VideoListAdapter(
     options: FirestoreRecyclerOptions<VideoModel>
@@ -19,6 +22,15 @@ class VideoListAdapter(
 
         fun bindVideo(videoModel: VideoModel) {
             //bind user data
+
+            Firebase.firestore.collection("users")
+                .document(videoModel.uploaderId)
+                .get().addOnSuccessListener {
+                    val userModel = it?.toObject(UserModel::class.java)
+                    userModel?.apply {
+                        binding.usernameView.text = username
+                    }
+                }
 
 
             //bind video
