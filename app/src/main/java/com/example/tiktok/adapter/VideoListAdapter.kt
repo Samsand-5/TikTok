@@ -29,9 +29,10 @@ class VideoListAdapter(
                     val userModel = it?.toObject(UserModel::class.java)
                     userModel?.apply {
                         binding.usernameView.text = username
+                        //bind profilePic
                     }
                 }
-
+            binding.captionView.text = videoModel.title
 
             //bind video
             binding.videoView.apply {
