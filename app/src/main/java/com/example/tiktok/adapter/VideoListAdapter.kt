@@ -33,11 +33,13 @@ class VideoListAdapter(
                     }
                 }
             binding.captionView.text = videoModel.title
+            binding.profileIcon.visibility = View.VISIBLE
 
             //bind video
             binding.videoView.apply {
                 setVideoPath(videoModel.url)
                 setOnPreparedListener {
+                    binding.profileIcon.visibility = View.GONE
                     it.start()
                     it.isLooping = true
                 }
