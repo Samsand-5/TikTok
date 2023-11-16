@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.tiktok.R
 import com.example.tiktok.databinding.VideoItemRowBinding
 import com.example.tiktok.model.UserModel
 import com.example.tiktok.model.VideoModel
@@ -30,6 +33,12 @@ class VideoListAdapter(
                     userModel?.apply {
                         binding.usernameView.text = username
                         //bind profilePic
+                        Glide.with(binding.profileIcon).load(profilepic)
+                            .circleCrop()
+                            .apply {
+                                RequestOptions().placeholder(R.drawable.icon_profile)
+                            }
+                            .into(binding.profileIcon)
                     }
                 }
             binding.captionView.text = videoModel.title
