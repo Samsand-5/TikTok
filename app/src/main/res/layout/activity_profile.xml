@@ -7,4 +7,9 @@
     android:orientation="vertical"
     tools:context=".ProfileActivity">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"/>
+
 </LinearLayout>
