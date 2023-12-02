@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this,VideoUploadActivity::class.java))
                 }
                 R.id.bottom_menu_profile->{
-                    UiUtil.showToast(this,"Profile")
+                    val intent = Intent(this,ProfileActivity::class.java)
+                    startActivity(intent)
                 }
             }
             false
