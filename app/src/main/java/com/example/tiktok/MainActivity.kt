@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.bottom_menu_profile->{
                     val intent = Intent(this,ProfileActivity::class.java)
+                    //getting user id form firebase and passing it to profile activity
                     intent.putExtra("profile_user_id", FirebaseAuth.getInstance().currentUser?.uid)
                     startActivity(intent)
                 }
