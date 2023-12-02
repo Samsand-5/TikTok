@@ -8,6 +8,7 @@ import com.example.tiktok.databinding.ActivityMainBinding
 import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.bottom_menu_profile->{
                     val intent = Intent(this,ProfileActivity::class.java)
+                    intent.putExtra("profile_user_id", FirebaseAuth.getInstance().currentUser?.uid)
                     startActivity(intent)
                 }
             }
