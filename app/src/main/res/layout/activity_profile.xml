@@ -35,7 +35,7 @@
         android:textSize="16sp"
         android:text="LOG OUT"
         android:backgroundTint="#F80101"
-        android:id="@+id/profile_id"/>
+        android:id="@+id/profile_btn"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

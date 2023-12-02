@@ -17,5 +17,18 @@ class ProfileActivity : AppCompatActivity() {
         profileUserId = intent.getStringExtra("profile_user_id")!!
         // getting current userId from Firebase
         currentUserId = FirebaseAuth.getInstance().currentUser?.uid!!
+
+        if(profileUserId==currentUserId) {
+            binding.profileBtn.text = "LOG OUT"
+        }
+        else{
+
+        }
+        getProfileDataFromFirebase()
     }
+
+     fun getProfileDataFromFirebase() {
+
+    }
+
 }
