@@ -49,6 +49,7 @@ class ProfileActivity : AppCompatActivity() {
             Glide.with(binding.profilePic).load(profilepic)
                 .apply(RequestOptions().placeholder(R.drawable.icon_profile))
                 .into(binding.profilePic)
+            binding.profileUsername.text = username
         }
     }
 
