@@ -2,6 +2,7 @@ package com.example.tiktok
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tiktok.databinding.ActivityProfileBinding
@@ -50,6 +51,7 @@ class ProfileActivity : AppCompatActivity() {
                 .apply(RequestOptions().placeholder(R.drawable.icon_profile))
                 .into(binding.profilePic)
             binding.profileUsername.text = username
+            binding.progressBar.visibility = View.INVISIBLE
         }
     }
 
