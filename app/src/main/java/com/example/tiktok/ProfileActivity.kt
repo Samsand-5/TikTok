@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
@@ -28,7 +30,12 @@ class ProfileActivity : AppCompatActivity() {
     }
 
      fun getProfileDataFromFirebase() {
+         Firebase.firestore.collection("users")
+             .document(profileUserId)
+             .get()
+             .addOnSuccessListener {
 
+             }
     }
 
 }
