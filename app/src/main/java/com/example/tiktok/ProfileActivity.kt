@@ -53,6 +53,7 @@ class ProfileActivity : AppCompatActivity() {
             binding.profileUsername.text = "@" + username
             binding.progressBar.visibility = View.INVISIBLE
             binding.followingCount.text = followingList.size.toString()
+            binding.followersCount.text = followerList.size.toString()
         }
     }
 
