@@ -2,6 +2,7 @@ package com.example.tiktok
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.example.tiktok.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -43,7 +44,9 @@ class ProfileActivity : AppCompatActivity() {
              }
     }
     fun setUi(){
-
+        profileUserModel.apply {
+            Glide.with(binding.profilePic).load(profilepic).into(binding.profilePic)
+        }
     }
 
 }
