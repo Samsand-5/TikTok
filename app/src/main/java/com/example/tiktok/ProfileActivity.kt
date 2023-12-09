@@ -35,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
         else{
-
+            // other profile
         }
         getProfileDataFromFirebase()
     }
