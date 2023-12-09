@@ -1,5 +1,6 @@
 package com.example.tiktok
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,9 @@ class ProfileActivity : AppCompatActivity() {
 
         if(profileUserId==currentUserId) {
             binding.profileBtn.text = "LOG OUT"
+            binding.profileBtn.setOnClickListener {
+                logout()
+            }
         }
         else{
 
@@ -36,6 +40,10 @@ class ProfileActivity : AppCompatActivity() {
         getProfileDataFromFirebase()
     }
 
+    fun logout(){
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this,LoginActivity::class.java)
+    }
      fun getProfileDataFromFirebase() {
          Firebase.firestore.collection("users")
              .document(profileUserId)
