@@ -57,7 +57,7 @@ class ProfileActivity : AppCompatActivity() {
             Firebase.firestore.collection("videos")
                 .whereEqualTo("uploaderid",profileUserId)
                 .get().addOnSuccessListener {
-
+                    binding.postsCount.text = it.size().toString()
                 }
         }
     }
