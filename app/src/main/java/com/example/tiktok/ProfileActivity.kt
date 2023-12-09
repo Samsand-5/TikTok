@@ -54,6 +54,11 @@ class ProfileActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.INVISIBLE
             binding.followingCount.text = followingList.size.toString()
             binding.followersCount.text = followerList.size.toString()
+            Firebase.firestore.collection("videos")
+                .whereEqualTo("uploaderid",profileUserId)
+                .get().addOnSuccessListener {
+
+                }
         }
     }
 
