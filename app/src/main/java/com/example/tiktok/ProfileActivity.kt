@@ -43,11 +43,18 @@ class ProfileActivity : AppCompatActivity() {
             binding.profileBtn.setOnClickListener {
                 logout()
             }
+            binding.profilePic.setOnClickListener {
+                checkPermissionAndPickPhoto()
+            }
         }
         else{
             // other profile
         }
         getProfileDataFromFirebase()
+    }
+
+    fun checkPermissionAndPickPhoto(){
+
     }
 
     fun logout(){
