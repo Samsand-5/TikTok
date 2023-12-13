@@ -60,7 +60,7 @@ class ProfileActivity : AppCompatActivity() {
     fun checkPermissionAndPickPhoto(){
         var readExternalVideo : String=""
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
-            readExternalVideo = android.Manifest.permission.READ_MEDIA_VIDEO
+            readExternalVideo = android.Manifest.permission.READ_MEDIA_IMAGES
         }
         else{
             readExternalVideo = android.Manifest.permission.READ_EXTERNAL_STORAGE
