@@ -64,11 +64,15 @@ class ProfileActivity : AppCompatActivity() {
             readExternalPhoto = android.Manifest.permission.READ_EXTERNAL_STORAGE
         }
         if(ContextCompat.checkSelfPermission(this,readExternalPhoto) == PackageManager.PERMISSION_GRANTED){
-            openVideoPicker()
+            openPhotoPicker()
         }
         else{
             ActivityCompat.requestPermissions(this, arrayOf(readExternalPhoto),100)
         }
+    }
+
+    fun openPhotoPicker(){
+
     }
 
     fun logout(){
