@@ -2,6 +2,7 @@ package com.example.tiktok
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
         photoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == RESULT_OK){
                 //upload photo
-
+                result.data!!.data?.let { uploadProfilePhotoToFirebase(it) }
             }
         }
         //getting profile userId from MainActivity.kt
@@ -71,6 +72,10 @@ class ProfileActivity : AppCompatActivity() {
         else{
             ActivityCompat.requestPermissions(this, arrayOf(readExternalPhoto),100)
         }
+    }
+
+    fun uploadProfilePhotoToFirebase(photoUri: Uri){
+
     }
 
     fun openPhotoPicker(){
