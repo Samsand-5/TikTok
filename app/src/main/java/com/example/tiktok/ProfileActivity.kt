@@ -15,9 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.example.tiktok.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.toObject
 import com.google.firebase.ktx.Firebase
 
 class ProfileActivity : AppCompatActivity() {
@@ -58,18 +56,18 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun checkPermissionAndPickPhoto(){
-        var readExternalVideo : String=""
+        var readExternalPhoto : String=""
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
-            readExternalVideo = android.Manifest.permission.READ_MEDIA_IMAGES
+            readExternalPhoto = android.Manifest.permission.READ_MEDIA_IMAGES
         }
         else{
-            readExternalVideo = android.Manifest.permission.READ_EXTERNAL_STORAGE
+            readExternalPhoto = android.Manifest.permission.READ_EXTERNAL_STORAGE
         }
-        if(ContextCompat.checkSelfPermission(this,readExternalVideo) == PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this,readExternalPhoto) == PackageManager.PERMISSION_GRANTED){
             openVideoPicker()
         }
         else{
-            ActivityCompat.requestPermissions(this, arrayOf(readExternalVideo),100)
+            ActivityCompat.requestPermissions(this, arrayOf(readExternalPhoto),100)
         }
     }
 
