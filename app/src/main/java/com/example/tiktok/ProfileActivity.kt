@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.example.tiktok.model.UserModel
+import com.example.tiktok.util.UiUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -72,7 +74,10 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun openPhotoPicker(){
-
+        var intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "video/*"
+        photoLauncher.launch(intent)
+        UiUtil.showToast(this,"Video Picker")
     }
 
     fun logout(){
