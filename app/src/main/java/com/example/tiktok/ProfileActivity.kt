@@ -29,9 +29,8 @@ class ProfileActivity : AppCompatActivity() {
 
         photoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == RESULT_OK){
-                //getting file from external storage
-                selectedVideoUri = result.data?.data
-                showPostView()
+                //upload photo
+
             }
         }
         //getting profile userId from MainActivity.kt
