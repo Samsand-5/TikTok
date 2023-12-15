@@ -126,6 +126,7 @@ class ProfileActivity : AppCompatActivity() {
         profileUserModel.apply {
             Glide.with(binding.profilePic).load(profilepic)
                 .apply(RequestOptions().placeholder(R.drawable.icon_profile))
+                .circleCrop()
                 .into(binding.profilePic)
             binding.profileUsername.text = "@" + username
             binding.progressBar.visibility = View.INVISIBLE
