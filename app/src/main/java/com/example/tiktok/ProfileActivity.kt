@@ -76,6 +76,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun uploadToFireStore(photoUri: Uri){
+        binding.progressBar.visibility = View.VISIBLE
         val photoRef = FirebaseStorage.getInstance()
             .reference.child("profilepic/"+ currentUserId) //create folder of profile picture and use is current User
         photoRef.putFile(photoUri)
@@ -91,6 +92,9 @@ class ProfileActivity : AppCompatActivity() {
         Firebase.firestore.collection("users")
             .document(currentUserId)
             .update("profilepic",url)
+            .addOnSuccessListener {
+                setUi()
+            }
     }
 
     fun openPhotoPicker(){
