@@ -88,7 +88,9 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun postToFireStore(url: String){
-
+        Firebase.firestore.collection("users")
+            .document(currentUserId)
+            .update("profilepic",url)
     }
 
     fun openPhotoPicker(){
