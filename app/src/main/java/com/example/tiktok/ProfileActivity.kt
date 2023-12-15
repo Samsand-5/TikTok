@@ -76,16 +76,19 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun uploadToFireStore(photoUri: Uri){
-        //create folder of profile picture and use is current User
         val photoRef = FirebaseStorage.getInstance()
-            .reference.child("profilepic/"+ currentUserId)
-        photoRef.putFile(this)
+            .reference.child("profilepic/"+ currentUserId) //create folder of profile picture and use is current User
+        photoRef.putFile(photoUri)
             .addOnSuccessListener{
                 photoRef.downloadUrl.addOnSuccessListener {downloadUrl->
                     //video model store in firestore
                     postToFireStore(downloadUrl.toString())
                 }
             }
+    }
+
+    fun postToFireStore(url: String){
+
     }
 
     fun openPhotoPicker(){
