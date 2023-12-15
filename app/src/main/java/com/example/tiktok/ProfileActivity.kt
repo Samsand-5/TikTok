@@ -82,7 +82,7 @@ class ProfileActivity : AppCompatActivity() {
         photoRef.putFile(photoUri)
             .addOnSuccessListener{
                 photoRef.downloadUrl.addOnSuccessListener {downloadUrl->
-                    //video model store in firestore
+                    //video model store in fireStore
                     postToFireStore(downloadUrl.toString())
                 }
             }
