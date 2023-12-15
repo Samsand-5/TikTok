@@ -20,6 +20,7 @@ import com.example.tiktok.util.UiUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
@@ -35,7 +36,7 @@ class ProfileActivity : AppCompatActivity() {
         photoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == RESULT_OK){
                 //upload photo
-                result.data!!.data?.let { uploadProfilePhotoToFirebase(it) }
+                result.data!!.data?.let { uploadToFireStore(it) }
             }
         }
         //getting profile userId from MainActivity.kt
@@ -74,8 +75,17 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    fun uploadProfilePhotoToFirebase(photoUri: Uri){
-
+    fun uploadToFireStore(photoUri: Uri){
+        //create folder of profile picture and use is current User
+        val photoRef = FirebaseStorage.getInstance()
+            .reference.child("profilepic/"+ currentUserId)
+        photoRef.putFile(this)
+            .addOnSuccessListener{
+                photoRef.downloadUrl.addOnSuccessListener {downloadUrl->
+                    //video model store in firestore
+                    postToFireStore(downloadUrl.toString())
+                }
+            }
     }
 
     fun openPhotoPicker(){
