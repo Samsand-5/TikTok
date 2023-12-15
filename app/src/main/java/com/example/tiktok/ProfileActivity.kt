@@ -93,7 +93,7 @@ class ProfileActivity : AppCompatActivity() {
             .document(currentUserId)
             .update("profilepic",url)
             .addOnSuccessListener {
-                setUi()
+                getProfileDataFromFirebase()
             }
     }
 
