@@ -39,6 +39,10 @@ class VideoListAdapter(
                                 RequestOptions().placeholder(R.drawable.icon_profile)
                             }
                             .into(binding.profileIcon)
+
+                        binding.userDetailLayout.setOnClickListener {
+
+                        }
                     }
                 }
             binding.captionView.text = videoModel.title
