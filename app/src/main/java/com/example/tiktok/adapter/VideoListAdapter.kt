@@ -46,7 +46,7 @@ class VideoListAdapter(
                         binding.userDetailLayout.setOnClickListener {
                             val intent = Intent(binding.userDetailLayout.context, ProfileActivity::class.java)
                             //getting user id form firebase and passing it to profile activity
-                            intent.putExtra("profile_user_id", FirebaseAuth.getInstance().currentUser?.uid)
+                            intent.putExtra("profile_user_id",id)
                             binding.userDetailLayout.context.startActivity(intent)
                         }
                     }
