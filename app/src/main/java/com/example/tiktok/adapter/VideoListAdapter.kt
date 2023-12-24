@@ -1,5 +1,6 @@
 package com.example.tiktok.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.tiktok.ProfileActivity
 import com.example.tiktok.R
 import com.example.tiktok.databinding.VideoItemRowBinding
 import com.example.tiktok.model.UserModel
 import com.example.tiktok.model.VideoModel
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -39,9 +42,12 @@ class VideoListAdapter(
                                 RequestOptions().placeholder(R.drawable.icon_profile)
                             }
                             .into(binding.profileIcon)
-
+                        //function by which one account can see other account on clicking the user_detail_layout
                         binding.userDetailLayout.setOnClickListener {
-
+                            val intent = Intent(binding.userDetailLayout.context, ProfileActivity::class.java)
+                            //getting user id form firebase and passing it to profile activity
+                            intent.putExtra("profile_user_id", FirebaseAuth.getInstance().currentUser?.uid)
+                            binding.userDetailLayout.context.startActivity(intent)
                         }
                     }
                 }
