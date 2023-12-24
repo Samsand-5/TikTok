@@ -74,7 +74,11 @@ class ProfileActivity : AppCompatActivity() {
                     //unfollow user
                     profileUserModel.followerList.remove(currentUserId)
                     currentUserModel.followerList.remove(profileUserId)
-                    binding.profileBtn.text = "follow"
+                    binding.profileBtn.text = "Follow"
+                }
+                else{
+                    //follow user
+                    binding.profileBtn.text = "Unfollow"
                 }
             }
     }
