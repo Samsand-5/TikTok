@@ -71,7 +71,9 @@ class ProfileActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 val currentUserModel = it.toObject(UserModel::class.java)!!
                 if(profileUserModel.followerList.contains(currentUserId)){
-
+                    //unfollow user
+                    profileUserModel.followerList.remove(currentUserId)
+                    currentUserModel.followerList.remove(profileUserId)
                     binding.profileBtn.text = "follow"
                 }
             }
