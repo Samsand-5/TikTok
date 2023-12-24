@@ -70,6 +70,9 @@ class ProfileActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener {
                 val currentUserModel = it.toObject(UserModel::class.java)!!
+                if(profileUserModel.followerList.contains(currentUserId)){
+                    binding.profileBtn.text = "Unfollow"
+                }
             }
     }
     fun checkPermissionAndPickPhoto(){
