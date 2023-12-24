@@ -45,6 +45,7 @@ class ProfileActivity : AppCompatActivity() {
         currentUserId = FirebaseAuth.getInstance().currentUser?.uid!!
 
         if(profileUserId==currentUserId) {
+            //current profile user
             binding.profileBtn.text = "LOG OUT"
             binding.profileBtn.setOnClickListener {
                 logout()
