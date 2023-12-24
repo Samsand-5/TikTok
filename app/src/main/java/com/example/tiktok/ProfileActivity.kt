@@ -56,10 +56,17 @@ class ProfileActivity : AppCompatActivity() {
         }
         else{
             // other profile
+            binding.profileBtn.text = "Follow"
+            binding.profileBtn.setOnClickListener {
+                followUnfollowUser()
+            }
         }
         getProfileDataFromFirebase()
     }
 
+    fun followUnfollowUser(){
+
+    }
     fun checkPermissionAndPickPhoto(){
         var readExternalPhoto : String=""
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
