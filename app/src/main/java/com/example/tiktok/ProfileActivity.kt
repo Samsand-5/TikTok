@@ -65,7 +65,12 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun followUnfollowUser(){
-
+        Firebase.firestore.collection("users")
+            .document(currentUserId)
+            .get()
+            .addOnSuccessListener {
+                val currentUserModel = it.toObject(UserModel::class.java)!!
+            }
     }
     fun checkPermissionAndPickPhoto(){
         var readExternalPhoto : String=""
