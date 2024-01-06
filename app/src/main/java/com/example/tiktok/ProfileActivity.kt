@@ -86,6 +86,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = GridLayoutManager(this,3)
         binding.recyclerView.adapter = adapter
 
+
     }
 
     fun followUnfollowUser(){
