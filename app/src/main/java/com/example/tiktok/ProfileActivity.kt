@@ -86,7 +86,16 @@ class ProfileActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = GridLayoutManager(this,3)
         binding.recyclerView.adapter = adapter
 
+    }
 
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        adapter.stopListening()
     }
 
     fun followUnfollowUser(){
