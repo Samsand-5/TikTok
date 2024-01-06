@@ -12,12 +12,16 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModel
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.tiktok.adapter.ProfileVideoAdapter
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.example.tiktok.model.UserModel
 import com.example.tiktok.util.UiUtil
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -28,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var currentUserId: String
     lateinit var profileUserModel: UserModel
     lateinit var photoLauncher: ActivityResultLauncher<Intent>
+    lateinit var adapter: ProfileVideoAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -62,6 +67,19 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
         getProfileDataFromFirebase()
+        setUpRecyclerView()
+    }
+
+    //set the query where it will take collections of Videos where uploaderId is profileUserId
+    //and it will sort by createdTime
+    private fun setUpRecyclerView() {
+        val options = FirestoreRecyclerOptions.Builder<ViewModel>()
+            .setQuery(
+                Firebase.firestore.collection("videos")
+                    .whereEqualTo("uploaderid",profileUserId)
+                    .orderBy("createdTime",Query.Direction.DESCENDING),
+                ViewModel::class.java
+            ).build()
     }
 
     fun followUnfollowUser(){
