@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tiktok.adapter.ProfileVideoAdapter
@@ -80,6 +81,11 @@ class ProfileActivity : AppCompatActivity() {
                     .orderBy("createdTime",Query.Direction.DESCENDING),
                 ViewModel::class.java
             ).build()
+
+        adapter = ProfileVideoAdapter(options)
+        binding.recyclerView.layoutManager = GridLayoutManager(this,3)
+        binding.recyclerView.adapter = adapter
+
     }
 
     fun followUnfollowUser(){
