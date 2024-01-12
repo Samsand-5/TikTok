@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".SingleVideoPlayerActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/vide_page"/>
+    
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
