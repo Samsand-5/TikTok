@@ -31,6 +31,6 @@ class ProfileVideoAdapter(options: FirestoreRecyclerOptions<VideoModel>)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
-        TODO("Not yet implemented")
+        holder.bind(model)
     }
 }
