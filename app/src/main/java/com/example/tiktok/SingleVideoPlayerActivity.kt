@@ -32,6 +32,16 @@ class SingleVideoPlayerActivity : AppCompatActivity() {
                 VideoModel::class.java
             ).build()
         adapter = VideoListAdapter(options)
-        binding.viewPager
+        binding.viewPager.adapter = adapter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        adapter.stopListening()
     }
 }
