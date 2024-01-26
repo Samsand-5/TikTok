@@ -22,6 +22,11 @@ class ProfileVideoAdapter(options: FirestoreRecyclerOptions<VideoModel>)
             Glide.with(binding.thumbnailImageView)
                 .load(video.url)
                 .into(binding.thumbnailImageView)
+            binding.thumbnailImageView.setOnClickListener {
+                val intent = Intent(binding.thumbnailImageView.context,SingleVideoPlayerActivity::class.java)
+                intent.putExtra("videoId",video.videoId)
+                binding.thumbnailImageView.context.startActivity(intent)
+            }
         }
     }
 
