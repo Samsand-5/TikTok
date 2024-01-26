@@ -3,6 +3,10 @@ package com.example.tiktok
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tiktok.databinding.ActivitySingleVideoPlayerBinding
+import com.example.tiktok.model.VideoModel
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SingleVideoPlayerActivity : AppCompatActivity() {
 
@@ -19,6 +23,11 @@ class SingleVideoPlayerActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        TODO("Not yet implemented")
+        val options = FirestoreRecyclerOptions.Builder<VideoModel>()
+            .setQuery(
+                Firebase.firestore.collection("videos")
+                    .whereEqualTo("videoId",videoId),
+                VideoModel::class.java
+            ).build()
     }
 }
