@@ -14,5 +14,11 @@ class SingleVideoPlayerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        videoId = intent.getStringExtra("videoId")!!
+        setupViewPager()
+    }
+
+    private fun setupViewPager() {
+        TODO("Not yet implemented")
     }
 }
