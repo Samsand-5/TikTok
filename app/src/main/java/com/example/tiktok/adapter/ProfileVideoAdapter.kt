@@ -14,5 +14,12 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 class ProfileVideoAdapter{
 
-    inner class VideoViewHolder(private val binding: ProfileVideoItemRowBinding) : RecyclerView.ViewHolder
+    inner class VideoViewHolder(private val binding: ProfileVideoItemRowBinding) : RecyclerView.ViewHolder(binding.root){
+
+        fun bind(video: VideoModel){
+            Glide.with(binding.thumbnailImageView)
+                .load(video.url)
+                .into(binding.thumbnailImageView)
+        }
+    }
 }
