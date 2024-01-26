@@ -93,6 +93,8 @@ class ProfileActivity : AppCompatActivity() {
         adapter.startListening()
     }
 
+    //when going to another activity it should go to destroy state and should not go
+    //to onStop() because it will crash the app.
     override fun onDestroy() {
         super.onDestroy()
         adapter.stopListening()
