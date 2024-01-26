@@ -2,6 +2,7 @@ package com.example.tiktok
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tiktok.adapter.VideoListAdapter
 import com.example.tiktok.databinding.ActivitySingleVideoPlayerBinding
 import com.example.tiktok.model.VideoModel
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -12,6 +13,7 @@ class SingleVideoPlayerActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySingleVideoPlayerBinding
     lateinit var videoId: String
+    lateinit var adapter: VideoListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingleVideoPlayerBinding.inflate(layoutInflater)
@@ -29,5 +31,7 @@ class SingleVideoPlayerActivity : AppCompatActivity() {
                     .whereEqualTo("videoId",videoId),
                 VideoModel::class.java
             ).build()
+        adapter = VideoListAdapter(options)
+        binding.viewPager
     }
 }
