@@ -27,6 +27,7 @@ class ProfileVideoAdapter(options: FirestoreRecyclerOptions<VideoModel>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val binding = ProfileVideoItemRowBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return VideoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int, model: VideoModel) {
