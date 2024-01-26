@@ -39,7 +39,7 @@ class VideoListAdapter(
                         Glide.with(binding.profileIcon).load(profilepic)
                             .circleCrop()
                             .apply {
-                                RequestOptions().placeholder(R.drawable.icon_profile)
+                                RequestOptions().placeholder(R.drawable.icon_account_circle)
                             }
                             .into(binding.profileIcon)
                         //function by which one account can see other account on clicking the user_detail_layout
