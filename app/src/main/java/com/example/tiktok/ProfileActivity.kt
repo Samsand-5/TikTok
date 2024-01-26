@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.tiktok.adapter.ProfileVideoAdapter
 import com.example.tiktok.databinding.ActivityProfileBinding
 import com.example.tiktok.model.UserModel
+import com.example.tiktok.model.VideoModel
 import com.example.tiktok.util.UiUtil
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -74,14 +75,13 @@ class ProfileActivity : AppCompatActivity() {
     //set the query where it will take collections of Videos where uploaderId is profileUserId
     //and it will sort by createdTime
     private fun setUpRecyclerView() {
-        val options = FirestoreRecyclerOptions.Builder<ViewModel>()
-            .setQuery(
-                Firebase.firestore.collection("videos")
-                    .whereEqualTo("uploaderid",profileUserId)
-                    .orderBy("createdTime",Query.Direction.DESCENDING),
-                ViewModel::class.java
-            ).build()
-
+       val options = FirestoreRecyclerOptions.Builder<VideoModel>()
+           .setQuery(
+               Firebase.firestore.collection("videos")
+                   .whereEqualTo("uploaderid",profileUserId)
+                   .orderBy("createdTime",Query.Direction.DESCENDING),
+               VideoModel::class.java
+           ).build()
         adapter = ProfileVideoAdapter(options)
         binding.recyclerView.layoutManager = GridLayoutManager(this,3)
         binding.recyclerView.adapter = adapter
